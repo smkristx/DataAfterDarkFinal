@@ -1,0 +1,150 @@
+library(readr)
+library(ggplot2)
+library(tidyr)
+MASTERdata <- read_csv("C:/Users/smkri/Documents/ENTITYAcademy/FINALPROJECT/DataWrangling/MASTERdata1.csv")
+
+National2019 <- MASTERdata[1:53, 1:34]
+National2020 <- MASTERdata[54:106, 1:34]
+National2021 <- MASTERdata[107:159, 1:34]
+Texas2019 <- MASTERdata[45:45, 1:34]
+Texas2020 <- MASTERdata[98:98, 1:34]
+Texas2021 <- MASTERdata[151:151, 1:34]
+
+
+#National Feline stats 2019
+NFI2019min <- min(National2019$`Feline Total Intakes`)
+NFI2019max <- max(National2019$`Feline Total Intakes`)
+print(paste("National Feline Intake 2019 - Range: ", NFI2019min, NFI2019max))
+NFI2019sum <- sum(National2019$`Feline Total Intakes`)
+print(paste("National Feline Intake 2019 - Sum: ", NFI2019sum))
+NFI2019mean <- mean(National2019$`Feline Total Intakes`)
+print(paste("National Feline Intake 2019 - Mean: ", NFI2019mean))
+NFI2019sd <- sd(National2019$`Feline Total Intakes`)
+print(paste("National Feline Intake 2019 - SD: ", NFI2019sd))
+
+NFE2019min <- min(National2019$`Feline Total Euth`)
+NFE2019max <- max(National2019$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2019 - Range: ", NFE2019min, NFE2019max))
+NFE2019sum <- sum(National2019$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2019 - Sum: ", NFE2019sum))
+NFE2019mean <- mean(National2019$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2019 - Mean: ", NFE2019mean))
+NFE2019sd <- sd(National2019$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2019 - SD: ", NFE2019sd))
+
+#National Feline stats 2020
+NFI2020min <- min(National2020$`Feline Total Intakes`)
+NFI2020max <- max(National2020$`Feline Total Intakes`)
+print(paste("National Feline Intake 2020 - Range: ", NFI2020min, NFI2020max))
+NFI2020sum <- sum(National2020$`Feline Total Intakes`)
+print(paste("National Feline Intake 2020 - Sum: ", NFI2020sum))
+NFI2020mean <- mean(National2020$`Feline Total Intakes`)
+print(paste("National Feline Intake 2020 - Mean: ", NFI2020mean))
+NFI2020sd <- sd(National2020$`Feline Total Intakes`)
+print(paste("National Feline Intake 2020 - SD: ", NFI2020sd))
+
+NFE2020min <- min(National2020$`Feline Total Euth`)
+NFE2020max <- max(National2020$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2020 - Range: ", NFE2020min, NFE2020max))
+NFE2020sum <- sum(National2020$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2020 - Sum: ", NFE2020sum))
+NFE2020mean <- mean(National2020$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2020 - Mean: ", NFE2020mean))
+NFE2020sd <- sd(National2020$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2020 - SD: ", NFE2020sd))
+
+#National Feline stats 2021
+NFI2021min <- min(National2021$`Feline Total Intakes`)
+NFI2021max <- max(National2021$`Feline Total Intakes`)
+print(paste("National Feline Intake 2021 - Range: ", NFI2021min, NFI2021max))
+NFI2021sum <- sum(National2021$`Feline Total Intakes`)
+print(paste("National Feline Intake 2021 - Sum: ", NFI2021sum))
+NFI2021mean <- mean(National2021$`Feline Total Intakes`)
+print(paste("National Feline Intake 2021 - Mean: ", NFI2021mean))
+NFI2021sd <- sd(National2021$`Feline Total Intakes`)
+print(paste("National Feline Intake 2021 - SD: ", NFI2021sd))
+
+NFE2021min <- min(National2021$`Feline Total Euth`)
+NFE2021max <- max(National2021$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2021 - Range: ", NFE2021min, NFE2021max))
+NFE2021sum <- sum(National2021$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2021 - Sum: ", NFE2021sum))
+NFE2021mean <- mean(National2021$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2021 - Mean: ", NFE2021mean))
+NFE2021sd <- sd(National2021$`Feline Total Euth`)
+print(paste("National Feline Euthanasia 2021 - SD: ", NFE2021sd))
+
+#National Canine stats 2019
+NCI2019min <- min(National2019$`Canine Total Intake`)
+NCI2019max <- max(National2019$`Canine Total Intake`)
+print(paste("National Canine Intake 2019 - Range: ", NCI2019min, NCI2019max))
+NCI2019sum <- sum(National2019$`Canine Total Intake`)
+print(paste("National Canine Intake 2019 - Sum: ", NCI2019sum))
+NCI2019mean <- mean(National2019$`Canine Total Intake`)
+print(paste("National Canine Intake 2019 - Mean: ", NCI2019mean))
+NCI2019sd <- sd(National2019$`Canine Total Intake`)
+print(paste("National Canine Intake 2019 - SD: ", NCI2019sd))
+
+
+NCE2019min <- min(National2019$`Canine Total Euth`)
+NCE2019max <- max(National2019$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2019 - Range: ", NCE2019min, NCE2019max))
+NCE2019sum <- sum(National2019$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2019 - Sum: ", NCE2019sum))
+NCE2019mean <- mean(National2019$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2019 - Mean: ", NCE2019mean))
+NCE2019sd <- sd(National2019$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2019 - SD: ", NCE2019sd))
+
+#National Canine stats 2020
+NCI2020min <- min(National2020$`Canine Total Intake`)
+NCI2020max <- max(National2020$`Canine Total Intake`)
+print(paste("National Canine Intake 2020 - Range: ", NCI2020min, NCI2020max))
+NCI2020sum <- sum(National2020$`Canine Total Intake`)
+print(paste("National Canine Intake 2020 - Sum: ", NCI2020sum))
+NCI2020mean <- mean(National2020$`Canine Total Intake`)
+print(paste("National Canine Intake 2020 - Mean: ", NCI2020mean))
+NCI2020sd <- sd(National2020$`Canine Total Intake`)
+print(paste("National Canine Intake 2020 - SD: ", NCI2020sd))
+
+NCE2020min <- min(National2020$`Canine Total Euth`)
+NCE2020max <- max(National2020$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2020 - Range: ", NCE2020min, NCE2020max))
+NCE2020sum <- sum(National2020$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2020 - Sum: ", NCE2020sum))
+NCE2020mean <- mean(National2020$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2020 - Mean: ", NCE2020mean))
+NCE2020sd <- sd(National2020$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2020 - SD: ", NCE2020sd))
+
+#National Canine stats 2021
+NCI2021min <- min(National2021$`Canine Total Intake`)
+NCI2021max <- max(National2021$`Canine Total Intake`)
+print(paste("National Canine Intake 2021 - Range: ", NCI2021min, NCI2021max))
+NCI2021sum <- sum(National2021$`Canine Total Intake`)
+print(paste("National Canine Intake 2021 - Sum: ", NCI2021sum))
+NCI2021mean <- mean(National2021$`Canine Total Intake`)
+print(paste("National Canine Intake 2021 - Mean: ", NCI2021mean))
+NCI2021sd <- sd(National2021$`Canine Total Intake`)
+print(paste("National Canine Intake 2021 - SD: ", NCI2021sd))
+
+NCE2021min <- min(National2021$`Canine Total Euth`)
+NCE2021max <- max(National2021$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2021 - Range: ", NCE2021min, NCE2021max))
+NCE2021sum <- sum(National2021$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2021 - Sum: ", NCE2021sum))
+NCE2021mean <- mean(National2021$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2021 - Mean: ", NCE2021mean))
+NCE2021sd <- sd(National2021$`Canine Total Euth`)
+print(paste("National Canine Euthanasia 2021 - SD: ", NCE2021sd))
+
+
+
+#t-tests
+NFIvE2019ttest <- t.test(National2019$`Feline Total Intakes`, National2019$`Feline Total Euth`, paired = TRUE)
+print(NFIvE2019ttest)
+NFIvE2020ttest <- t.test(National2020$`Feline Total Intakes`, National2020$`Feline Total Euth`, paired = TRUE)
+print(NFIvE2020ttest)
+NFIvE2021ttest <- t.test(National2021$`Feline Total Intakes`, National2021$`Feline Total Euth`, paired = TRUE)
+print(NFIvE2021ttest)
+#There is a significant correlation between intakes and euthanasia rates at the national level for all 3 years
