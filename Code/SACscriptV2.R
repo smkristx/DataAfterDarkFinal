@@ -148,3 +148,53 @@ print(NFIvE2020ttest)
 NFIvE2021ttest <- t.test(National2021$`Feline Total Intakes`, National2021$`Feline Total Euth`, paired = TRUE)
 print(NFIvE2021ttest)
 #There is a significant correlation between intakes and euthanasia rates at the national level for all 3 years
+
+#What are the percentages of euthanasia from intakes for Texas and the nation as a whole?
+TXFelEuthRate2019 <- (Texas2019$`Feline Total Euth`)/(Texas2019$`Feline Total Intakes`)
+print(paste("Texas Feline Euthanasia Rate for 2019: ", TXFelEuthRate2019))
+TXCanEuthRate2019 <- (Texas2019$`Canine Total Euth`)/(Texas2019$`Canine Total Intake`)
+print(paste("Texas Canine Euthanasia Rate for 2019: ", TXCanEuthRate2019))
+TXFelEuthRate2020 <- (Texas2020$`Feline Total Euth`)/(Texas2020$`Feline Total Intakes`)
+print(paste("Texas Feline Euthanasia Rate for 2020: ", TXFelEuthRate2020))
+TXCanEuthRate2020 <- (Texas2020$`Canine Total Euth`)/(Texas2020$`Canine Total Intake`)
+print(paste("Texas Canine Euthanasia Rate for 2020: ", TXCanEuthRate2020))
+TXFelEuthRate2021 <- (Texas2021$`Feline Total Euth`)/(Texas2021$`Feline Total Intakes`)
+print(paste("Texas Feline Euthanasia Rate for 2021: ", TXFelEuthRate2021))
+TXCanEuthRate2021 <- (Texas2021$`Canine Total Euth`)/(Texas2021$`Canine Total Intake`)
+print(paste("Texas Canine Euthanasia Rate for 2021: ", TXCanEuthRate2021))
+
+NatlFelEuthRate2019 <- (NFE2019sum)/(NFI2019sum)
+print(paste("National Feline Euthanasia Rate for 2019: ", NatlFelEuthRate2019))
+NatlCanEuthRate2019 <- (NCE2019sum)/(NCI2019sum)
+print(paste("National Canine Euthanasia Rate for 2019: ", NatlCanEuthRate2019))
+NatlFelEuthRate2020 <- (NFE2020sum)/(NFI2020sum)
+print(paste("National Feline Euthanasia Rate for 2020: ", NatlFelEuthRate2020))
+NatlCanEuthRate2020 <- (NCE2020sum)/(NCI2020sum)
+print(paste("National Canine Euthanasia Rate for 2020: ", NatlCanEuthRate2020))
+NatlFelEuthRate2021 <- (NFE2021sum)/(NFI2021sum)
+print(paste("National Feline Euthanasia Rate for 2021: ", NatlFelEuthRate2021))
+NatlCanEuthRate2021 <- (NCE2021sum)/(NCI2021sum)
+print(paste("National Canine Euthanasia Rate for 2021: ", NatlCanEuthRate2021))
+#The percentage of animal intakes that are then euthanized are slightly lower in Texas than of the Nation as a whole.
+
+#Let's put those rates into a data frame
+TXCanRates <- c(TXCanEuthRate2019, TXCanEuthRate2020, TXCanEuthRate2021)
+TXFelRates <- c(TXFelEuthRate2019, TXFelEuthRate2020, TXFelEuthRate2021)
+NatlCanRates <- c(NatlCanEuthRate2019, NatlCanEuthRate2020, NatlCanEuthRate2021)
+NatlFelRates <- c(NatlFelEuthRate2019, NatlFelEuthRate2020, NatlFelEuthRate2021)
+Year <- c(2019, 2020, 2021)
+EuthRates <- data.frame(Year, TXCanRates, TXFelRates, NatlCanRates, NatlFelRates)
+
+Year1 <- c(2019, 2020, 2021, 2019, 2020, 2021)
+Species <- c("Canine", "Canine", "Canine", "Feline", "Feline", "Feline")
+TXRates <- c(TXCanRates, TXFelRates)
+NatlRates <- c(NatlCanRates, NatlFelRates)
+EuthRates1 <- data.frame(Year1, Species, TXRates, NatlRates)
+
+#Let's take a look at the rates side by side
+ggplot(data=EuthRates1) +
+  geom_bar(mapping= aes(x= Species, fill=TXRates), position = "dodge") + 
+  ggtitle("Sales Categories by Salary Level") +
+  xlab("Sales Category") +
+  ylab("Frequency")  
+
