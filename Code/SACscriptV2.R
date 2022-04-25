@@ -148,6 +148,7 @@ print(NFIvE2020ttest)
 NFIvE2021ttest <- t.test(National2021$`Feline Total Intakes`, National2021$`Feline Total Euth`, paired = TRUE)
 print(NFIvE2021ttest)
 #There is a significant correlation between intakes and euthanasia rates at the national level for all 3 years
+# - put in histograms
 
 #What are the percentages of euthanasia from intakes for Texas and the nation as a whole?
 TXFelEuthRate2019 <- (Texas2019$`Feline Total Euth`)/(Texas2019$`Feline Total Intakes`)
@@ -191,10 +192,4 @@ TXRates <- c(TXCanRates, TXFelRates)
 NatlRates <- c(NatlCanRates, NatlFelRates)
 EuthRates1 <- data.frame(Year1, Species, TXRates, NatlRates)
 
-#Let's take a look at the rates side by side
-ggplot(data=EuthRates1) +
-  geom_bar(mapping= aes(x= Species, fill=TXRates), position = "dodge") + 
-  ggtitle("Sales Categories by Salary Level") +
-  xlab("Sales Category") +
-  ylab("Frequency")  
-
+# - make total columns - use line graph
