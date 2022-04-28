@@ -1,6 +1,7 @@
 library(readr)
 library(ggplot2)
 library(tidyr)
+library(reshape2)
 MASTERdata <- read_csv("C:/Users/smkri/Documents/ENTITYAcademy/FINALPROJECT/DataWrangling/MASTERdata1.csv")
 
 National2019 <- MASTERdata[1:53, 1:34]
@@ -148,7 +149,15 @@ print(NFIvE2020ttest)
 NFIvE2021ttest <- t.test(National2021$`Feline Total Intakes`, National2021$`Feline Total Euth`, paired = TRUE)
 print(NFIvE2021ttest)
 #There is a significant correlation between intakes and euthanasia rates at the national level for all 3 years
-# - put in histograms
+
+
+# - put in histograms *********************************************************
+National2019N <- as.numeric(as.character(National2019$`Feline Total Intakes`))
+National2019NR <- data.frame(National2019N)
+NFI2019_plot <-  ggplot(National2019NR, aes(x="Feline Total Intakes"))
+NFI2019_plot + geom_histogram(binwidth = 30, fill = "deepskyblue4") +
+  ggtitle("Histogram of National Feline Euthanasia Rates in 2019") + xlab("Rate")
+
 
 #What are the percentages of euthanasia from intakes for Texas and the nation as a whole?
 TXFelEuthRate2019 <- (Texas2019$`Feline Total Euth`)/(Texas2019$`Feline Total Intakes`)
@@ -178,18 +187,41 @@ NatlCanEuthRate2021 <- (NCE2021sum)/(NCI2021sum)
 print(paste("National Canine Euthanasia Rate for 2021: ", NatlCanEuthRate2021))
 #The percentage of animal intakes that are then euthanized are slightly lower in Texas than of the Nation as a whole.
 
-#Let's put those rates into a data frame
-TXCanRates <- c(TXCanEuthRate2019, TXCanEuthRate2020, TXCanEuthRate2021)
-TXFelRates <- c(TXFelEuthRate2019, TXFelEuthRate2020, TXFelEuthRate2021)
-NatlCanRates <- c(NatlCanEuthRate2019, NatlCanEuthRate2020, NatlCanEuthRate2021)
-NatlFelRates <- c(NatlFelEuthRate2019, NatlFelEuthRate2020, NatlFelEuthRate2021)
-Year <- c(2019, 2020, 2021)
-EuthRates <- data.frame(Year, TXCanRates, TXFelRates, NatlCanRates, NatlFelRates)
-
-Year1 <- c(2019, 2020, 2021, 2019, 2020, 2021)
-Species <- c("Canine", "Canine", "Canine", "Feline", "Feline", "Feline")
-TXRates <- c(TXCanRates, TXFelRates)
-NatlRates <- c(NatlCanRates, NatlFelRates)
-EuthRates1 <- data.frame(Year1, Species, TXRates, NatlRates)
-
 # - make total columns - use line graph
+
+NatlInt2019 <- NFI2019sum + NCI2019sum
+NatlEuth2019 <- NFE2019sum + NCE2019sum
+NatlInt2020 <- NFI2020sum + NCI2020sum
+NatlEuth2020 <- NFE2020sum + NCE2020sum
+NatlInt2021 <- NFI2021sum + NCI2021sum
+NatlEuth2021 <- NFE2021sum + NCE2021sum
+TXInt2019 <- Texas2019$`Feline Total Intakes` + Texas2019$`Canine Total Intake`
+TXEuth2019 <- Texas2019$`Feline Total Euth` + Texas2019$`Canine Total Euth`
+TXInt2020 <- Texas2020$`Feline Total Intakes` + Texas2020$`Canine Total Intake`
+TXEuth2020 <- Texas2020$`Feline Total Euth` + Texas2020$`Canine Total Euth`
+TXInt2021 <- Texas2021$`Feline Total Intakes` + Texas2021$`Canine Total Intake`
+TXEuth2021 <- Texas2021$`Feline Total Euth` + Texas2021$`Canine Total Euth`
+
+Year <- c(2019, 2020, 2021)
+NatlInts <- c(NatlInt2019, NatlInt2020, NatlInt2021)
+NatlEuths <- c(NatlEuth2019, NatlEuth2020, NatlEuth2021)
+TXInts <- c(TXInt2019, TXInt2020, TXInt2021)
+TXEuths <- c(TXEuth2019, TXEuth2020, TXEuth2021)
+
+Totals <- data.frame(Year, NatlInts, NatlEuths, TXInts, TXEuths)
+
+
+Totals_plot <- ggplot(Totals, aes(Year))
+Totals_plot + geom_line(aes(y=NatlInts, colour="National Intakes")) + 
+  geom_line(aes(y=NatlEuths, colour="National Euthanasias")) +
+  geom_line(aes(y=TXInts, colour="Texas Intakes")) +
+  geom_line(aes(y=TXEuths, colour="Texas Euthanasias")) +
+  xlab("Year") + 
+  ylab("Number of Animals") + 
+  ggtitle("Intakes vs. Euthanasias Nationally and in Texas")
+
+# Reshaping the data to see if I can get a better looking side-by-side barchart
+molten.data <- melt(Totals, id = c("Year"))
+
+ggplot(molten.data, aes(variable, Year, fill=value)) + 
+  geom_bar(position="dodge")
