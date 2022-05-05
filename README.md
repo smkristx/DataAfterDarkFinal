@@ -48,5 +48,6 @@ Tableau was utilized for visualizing our findings. Those visualizations are then
 ## Week 6 - Presentation
 And here we are!
 
-![FINAL PRESENTATION](https://github.com/smkristx/DataAfterDarkFinal/blob/6c68bc491e885a0bcd589ca36c92786b3bec4b5a/Presentation/D.A.D.%20EA%20Final%20Presentation.pptx)
-![FINAL VIDEO](https://vimeo.com/705957829)
+[D.A.D. EA Final Presentation.pptx](https://github.com/smkristx/DataAfterDarkFinal/files/8635995/D.A.D.EA.Final.Presentation.pptx)
+
+https://vimeo.com/705957829
